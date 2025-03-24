@@ -61,7 +61,7 @@ export default function AuthPage() {
         <div className="w-full max-w-md">
           <div className="flex flex-col items-center mb-8">
             <img 
-              src="/assets/Beavernet.png" 
+              src="/Beavernet.png" 
               alt="Beavernet Logo" 
               className="w-32 h-32 mb-4" 
             />

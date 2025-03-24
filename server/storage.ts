@@ -49,6 +49,13 @@ export class MemStorage implements IStorage {
       password: "$2b$10$8wKJfQVMZsLSGypOyP0.DOVj4EHmGg8MRqvfj3jH8JUmJDwGZNcPW", // "password" hashed
       email: "admin@beavernet.local"
     });
+    
+    // Create default user with provided credentials
+    this.createUser({
+      username: "Remiguillette",
+      password: "$2b$10$Q9w.q7rS3Oqk6F6YxV3DHeqEeAGj7clfjUTwqtbceDH/XOP8ebP3q", // "MC44rg99qc@" hashed
+      email: "remiguillette@beavernet.local"
+    });
   }
 
   async getUser(id: number): Promise<User | undefined> {
