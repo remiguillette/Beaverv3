@@ -65,7 +65,7 @@ export default function AuthPage() {
               alt="Beavernet Logo" 
               className="w-50 h-60 mb-4" 
             />
-            <h1 className="text-2xl font-semibold text-center text-white mt-2">Beavernet</h1>
+            <h1 className="text-2xl font-semibold text-center text-primary mt-2">Beavernet</h1>
           </div>
 
           <Card className="border-border bg-card">
