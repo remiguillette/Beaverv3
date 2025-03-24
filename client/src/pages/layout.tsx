@@ -17,7 +17,6 @@ import {
   DropdownMenuSeparator, 
   DropdownMenuTrigger 
 } from "@/components/ui/dropdown-menu";
-import BeaverLogo from "@/components/BeaverLogo";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle, CheckCircle2, X } from "lucide-react";
@@ -59,7 +58,7 @@ export default function Layout({ children }: LayoutProps) {
                 <img src="/Beavernet.png" alt="Beavernet" className="h-8 w-8 mr-2" />
                 <span className="text-primary font-semibold text-lg">Beavernet</span>
               </Link>
-              
+
               <div className="ml-10 flex items-center space-x-4 text-sm">
                 {navLinks.map((link) => (
                   <Link 
@@ -77,13 +76,13 @@ export default function Layout({ children }: LayoutProps) {
                 ))}
               </div>
             </div>
-            
+
             <div className="flex items-center">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center">
                     <div className="h-8 w-8 rounded-full overflow-hidden bg-secondary border border-border mr-2">
-                      <BeaverLogo className="h-full w-full text-primary" size="sm" />
+                      {/* BeaverLogo removed here */}
                     </div>
                     <span className="text-muted-foreground">{user.username}</span>
                     <ChevronDown className="ml-1 h-5 w-5 text-muted-foreground" />
@@ -107,7 +106,7 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </nav>
-      
+
       {showSuccessAlert && (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-4">
           <Alert className="bg-green-900 bg-opacity-20 border-green-800">
@@ -126,11 +125,11 @@ export default function Layout({ children }: LayoutProps) {
           </Alert>
         </div>
       )}
-      
+
       <main className="flex-grow">
         {children}
       </main>
-      
+
       <footer className="bg-card py-4 border-t border-border mt-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
