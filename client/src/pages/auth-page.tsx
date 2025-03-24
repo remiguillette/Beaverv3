@@ -22,7 +22,7 @@ type LoginFormValues = z.infer<typeof loginSchema>;
 export default function AuthPage() {
   const navigate = useNavigate();
   const { user, loginMutation } = useAuth();
-  
+
   // Redirect if user is already logged in
   useEffect(() => {
     if (user) {
@@ -63,7 +63,7 @@ export default function AuthPage() {
             <img 
               src="/Beavernet.png" 
               alt="Beavernet Logo" 
-              className="w-32 h-32 mb-4" 
+              className="w-40 h-40 mb-4" 
             />
             <h1 className="text-2xl font-semibold text-center text-white mt-2">Beavernet</h1>
           </div>
@@ -85,7 +85,7 @@ export default function AuthPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={loginForm.control}
                     name="password"
@@ -99,7 +99,7 @@ export default function AuthPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={loginForm.control}
                     name="rememberMe"
@@ -119,7 +119,7 @@ export default function AuthPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   <Button 
                     type="submit" 
                     className="w-full bg-primary hover:bg-primary/90 mt-4"
