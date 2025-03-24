@@ -91,6 +91,12 @@ export function setupAuth(app: Express) {
   });
 
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
+    // Mettre à jour la durée du cookie de session si l'option "remember me" est activée
+    if (req.body.rememberMe) {
+      req.session.cookie.maxAge = 30 * 24 * 60 * 60 * 1000; // 30 jours
+    } else {
+      req.session.cookie.maxAge = 24 * 60 * 60 * 1000; // 1 jour (défaut)
+    }
     res.status(200).json(req.user);
   });
 

@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
-import BeaverLogo from "@/components/BeaverLogo";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -62,7 +61,7 @@ export default function AuthPage() {
         <div className="w-full max-w-md">
           <div className="flex flex-col items-center mb-8">
             <img 
-              src="/src/assets/Beavernet.png" 
+              src="/assets/Beavernet.png" 
               alt="Beavernet Logo" 
               className="w-32 h-32 mb-4" 
             />
