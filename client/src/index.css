@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  input {
+    @apply bg-background text-foreground;
+  }
   :root {
     --background: 0 0% 7%;
     --foreground: 0 0% 88%;
