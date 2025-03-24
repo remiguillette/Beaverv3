@@ -15,12 +15,16 @@ import Layout from "@/pages/layout";
 function Router() {
   return (
     <Switch>
-      <Route path="/auth" component={AuthPage} />
+      <Route path="/auth">
+        <AuthPage />
+      </Route>
       <ProtectedRoute path="/" component={DashboardPage} />
       <ProtectedRoute path="/firewall" component={FirewallPage} />
       <ProtectedRoute path="/proxy" component={ProxyPage} />
       <ProtectedRoute path="/profile" component={ProfilePage} />
-      <Route component={NotFound} />
+      <Route>
+        <NotFound />
+      </Route>
     </Switch>
   );
 }
