@@ -87,7 +87,7 @@ export default function ProfilePage() {
               <div className="flex flex-col items-center">
                 <div className="mb-4 relative">
                   <div className="h-28 w-28 rounded-full overflow-hidden bg-secondary border-2 border-primary">
-                    <BeaverLogo className="h-full w-full text-primary" />
+                    <img src="/Beavernet.png" alt="Beavernet" className="h-full w-full object-cover" />
                   </div>
                   <Button 
                     className="absolute bottom-0 right-0 bg-primary hover:bg-primary/90 text-white rounded-full p-2"
