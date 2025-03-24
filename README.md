@@ -1,38 +1,38 @@
 
-# Express Proxy Manager
+# Gestionnaire de Proxy Express
 
-A web application for managing proxy configurations with Express and React.
+Une application web pour gérer les configurations de proxy avec Express et React.
 
-## Features
-- Proxy configuration management
-- User authentication
-- Network traffic forwarding
+## Fonctionnalités
+- Gestion des configurations de proxy
+- Authentification utilisateur
+- Redirection du trafic réseau
 
-## Setup
-1. Clone the repository
-2. Install dependencies:
+## Installation
+1. Cloner le dépôt
+2. Installer les dépendances :
 ```bash
 npm install
 ```
-3. Configure environment variables (see Configuration section)
-4. Start development server:
+3. Configurer les variables d'environnement (voir section Configuration)
+4. Démarrer le serveur de développement :
 ```bash
 npm run dev
 ```
 
 ## Configuration
-The application uses the following environment variables:
-- `DATABASE_URL`: PostgreSQL database connection string
-- `PORT`: Server port (default: 5000)
+L'application utilise les variables d'environnement suivantes :
+- `DATABASE_URL` : Chaîne de connexion à la base de données PostgreSQL 
+- `PORT` : Port du serveur (par défaut : 5000)
 
-## Port Configuration
-The server port can be modified in:
-- Development: `server/index.ts`
-- Production: Set `PORT` environment variable
-- Deployment: Configure in `.replit` file
+## Configuration du Port
+Le port du serveur peut être modifié dans :
+- Développement : `server/index.ts`
+- Production : Définir la variable d'environnement `PORT`
+- Déploiement : Configurer dans le fichier `.replit`
 
 ## Production
-Build and start:
+Compiler et démarrer :
 ```bash
 npm run build
 npm run start

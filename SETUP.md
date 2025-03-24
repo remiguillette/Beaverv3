@@ -1,47 +1,47 @@
 
-# Setup Guide
+# Guide d'Installation
 
-## Linux Installation
+## Installation Linux
 
-1. Install Node.js and npm:
+1. Installer Node.js et npm :
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-2. Install PostgreSQL:
+2. Installer PostgreSQL :
 ```bash
 sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib
 ```
 
-3. Clone and setup project:
+3. Cloner et configurer le projet :
 ```bash
-git clone <your-repo-url>
-cd <project-directory>
+git clone <url-de-votre-dépôt>
+cd <dossier-du-projet>
 npm install
 ```
 
-4. Database setup:
+4. Configuration de la base de données :
 ```bash
 sudo -u postgres psql
 CREATE DATABASE proxymanager;
-CREATE USER proxyuser WITH PASSWORD 'yourpassword';
+CREATE USER proxyuser WITH PASSWORD 'votremotdepasse';
 GRANT ALL PRIVILEGES ON DATABASE proxymanager TO proxyuser;
 ```
 
-5. Environment setup:
+5. Configuration de l'environnement :
 ```bash
-echo "DATABASE_URL=postgresql://proxyuser:yourpassword@localhost:5432/proxymanager" > .env
+echo "DATABASE_URL=postgresql://proxyuser:votremotdepasse@0.0.0.0:5432/proxymanager" > .env
 ```
 
-6. Start development server:
+6. Démarrer le serveur de développement :
 ```bash
 npm run dev
 ```
 
-## Dependencies List
-- Core:
+## Liste des Dépendances
+- Core :
   - express
   - react
   - typescript
@@ -50,39 +50,39 @@ npm run dev
   - passport
   - express-session
 
-- UI:
+- Interface utilisateur :
   - tailwindcss
-  - shadcn/ui components
+  - composants shadcn/ui
   - lucide-react
 
-- Development:
+- Développement :
   - vite
   - tsx
   - typescript
   - esbuild
 
-## Port Configuration Guide
+## Guide de Configuration des Ports
 
-1. Development port (server/index.ts):
+1. Port de développement (server/index.ts) :
 ```typescript
 const port = process.env.PORT || 5000;
 ```
 
-2. Production port:
-- Set PORT environment variable
-- Update .replit configuration:
+2. Port de production :
+- Définir la variable d'environnement PORT
+- Mettre à jour la configuration .replit :
 ```toml
 [[ports]]
-localPort = YOUR_PORT
+localPort = VOTRE_PORT
 externalPort = 80
 ```
 
-3. Verify port access:
+3. Vérifier l'accès au port :
 ```bash
 sudo netstat -tulpn | grep LISTEN
 ```
 
-4. Firewall configuration (if needed):
+4. Configuration du pare-feu (si nécessaire) :
 ```bash
-sudo ufw allow YOUR_PORT/tcp
+sudo ufw allow VOTRE_PORT/tcp
 ```
