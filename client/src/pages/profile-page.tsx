@@ -190,22 +190,18 @@ export default function ProfilePage() {
                 <div>
                   <h3 className="text-white font-medium mb-2">Pare-feu</h3>
                   <p className="text-muted-foreground text-sm mb-3">Configurez vos règles de pare-feu pour protéger votre réseau.</p>
-                  <Link href="/firewall">
-                    <a className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
-                      <Shield className="h-4 w-4 mr-1" />
-                      Gérer le pare-feu
-                    </a>
+                  <Link to="/firewall" className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
+                    <Shield className="h-4 w-4 mr-1" />
+                    Gérer le pare-feu
                   </Link>
                 </div>
                 
                 <div>
                   <h3 className="text-white font-medium mb-2">Proxy</h3>
                   <p className="text-muted-foreground text-sm mb-3">Configurez les paramètres du proxy pour la redirection du trafic.</p>
-                  <Link href="/proxy">
-                    <a className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
-                      <ArrowLeftRight className="h-4 w-4 mr-1" />
-                      Gérer le proxy
-                    </a>
+                  <Link to="/proxy" className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
+                    <ArrowLeftRight className="h-4 w-4 mr-1" />
+                    Gérer le proxy
                   </Link>
                 </div>
               </div>
