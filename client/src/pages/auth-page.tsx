@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useLocation } from "wouter";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import BeaverLogo from "@/components/BeaverLogo";
 import { insertUserSchema } from "@shared/schema";
@@ -31,15 +31,15 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 
 export default function AuthPage() {
   const [activeTab, setActiveTab] = useState<string>("login");
-  const [_, setLocation] = useLocation();
+  const navigate = useNavigate();
   const { user, loginMutation, registerMutation } = useAuth();
   
   // Redirect if user is already logged in
   useEffect(() => {
     if (user) {
-      setLocation("/");
+      navigate("/");
     }
-  }, [user, setLocation]);
+  }, [user, navigate]);
 
   const loginForm = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),

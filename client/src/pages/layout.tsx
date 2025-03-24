@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import { useLocation, Link } from "wouter";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/use-auth";
 import { 
   ChevronDown, 
@@ -27,13 +27,14 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
-  const [location] = useLocation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { user, logoutMutation } = useAuth();
   const { toast } = useToast();
   const [showSuccessAlert, setShowSuccessAlert] = useState(true);
 
   // If location is /auth, don't render the layout
-  if (location === "/auth" || !user) {
+  if (location.pathname === "/auth" || !user) {
     return <>{children}</>;
   }
 
@@ -54,7 +55,7 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center">
+              <Link to="/" className="flex items-center">
                 <BeaverLogo className="h-8 w-8 text-primary mr-2" size="sm" />
                 <span className="text-primary font-semibold text-lg">Beavernet</span>
               </Link>
@@ -62,10 +63,10 @@ export default function Layout({ children }: LayoutProps) {
               <div className="ml-10 flex items-center space-x-4 text-sm">
                 {navLinks.map((link) => (
                   <Link 
-                    href={link.path} 
+                    to={link.path} 
                     key={link.path}
                     className={`flex items-center px-3 py-2 rounded-md font-medium ${
-                      location === link.path 
+                      location.pathname === link.path 
                         ? "text-white bg-secondary" 
                         : "text-muted-foreground hover:text-white hover:bg-secondary"
                     }`}
@@ -90,7 +91,7 @@ export default function Layout({ children }: LayoutProps) {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuItem asChild>
-                    <Link href="/profile" className="flex items-center cursor-pointer">
+                    <Link to="/profile" className="flex items-center cursor-pointer">
                       <User className="mr-2 h-4 w-4" />
                       <span>Profil</span>
                     </Link>
