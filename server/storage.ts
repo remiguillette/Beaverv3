@@ -21,14 +21,14 @@ export interface IStorage {
   addProxyConfig(config: any): Promise<any>;
   deleteProxyConfig(id: string): Promise<boolean>;
   
-  sessionStore: session.SessionStore;
+  sessionStore: any; // Type for session store
 }
 
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private firewallRules: Map<string, any>;
   private proxyConfigs: Map<string, any>;
-  public sessionStore: session.SessionStore;
+  public sessionStore: any;
   currentId: number;
 
   constructor() {
@@ -46,14 +46,14 @@ export class MemStorage implements IStorage {
     // Create a default admin user
     this.createUser({
       username: "admin",
-      password: "$2b$10$8wKJfQVMZsLSGypOyP0.DOVj4EHmGg8MRqvfj3jH8JUmJDwGZNcPW", // "password" hashed
+      password: "66e7bc5d3cd8ad121a723a18e765bb0b430a492447245f833d38d43a72b7b7a824d103ac8d2580f1bd3b91deececbef7443e985191aae3ab623253bcc20207d4.0c37330a66aacaf76510f0856a257a8d", // "password" hashed
       email: "admin@beavernet.local"
     });
     
     // Create default user with provided credentials
     this.createUser({
-      username: "Remiguillette",
-      password: "$2b$10$Q9w.q7rS3Oqk6F6YxV3DHeqEeAGj7clfjUTwqtbceDH/XOP8ebP3q", // "MC44rg99qc@" hashed
+      username: "remiguillette",
+      password: "b7d13ed923d76c95243b1889196755f0062f45ec34f539d179098ef0768a7d74efc1b2e4724a9f61a555c7aecd18e7c4c4ed610a2f8c79e57b36d0c6e9308ea0.167e05e0456da37bbe1009f2fa1449b6", // "MC44rg99qc@" hashed
       email: "remiguillette@beavernet.local"
     });
   }
@@ -70,7 +70,13 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.currentId++;
-    const user: User = { ...insertUser, id };
+    // Create user object with explicit properties to satisfy type requirements
+    const user: User = {
+      id,
+      username: insertUser.username,
+      password: insertUser.password,
+      email: insertUser.email || null
+    };
     this.users.set(id, user);
     return user;
   }
