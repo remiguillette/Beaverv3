@@ -66,7 +66,6 @@ export default function AuthPage() {
               className="w-32 h-32 mb-4" 
             />
             <h1 className="text-2xl font-semibold text-center text-white mt-2">Beavernet</h1>
-            <p className="text-primary font-medium text-center mt-1">Intranet sécurisé</p>
           </div>
 
           <Card className="border-border bg-card">
