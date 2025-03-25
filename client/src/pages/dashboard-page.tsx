@@ -8,8 +8,7 @@ export default function DashboardPage() {
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-2">Tableau de bord</h1>
-      <h2 className="text-xl mb-2">Bienvenue sur Beavernet</h2>
-      <p className="text-gray-500 mb-6">remiguillette</p>
+      <p className="text-gray-500 mb-6">Bienvenue sur Beavernet remiguillette</p>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
         <DashboardPanel
           title="BeaverDoc"
