@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
@@ -18,6 +19,9 @@ const DashboardPanel: React.FC<DashboardPanelProps> = ({
   linkTo,
   buttonText
 }) => {
+  const isExternalLink = linkTo.startsWith('http');
+  const LinkComponent = isExternalLink ? 'a' : Link;
+
   return (
     <Card className="bg-card border border-border hover:shadow-lg transition-transform hover:scale-105">
       <CardContent className="p-5">
@@ -27,10 +31,14 @@ const DashboardPanel: React.FC<DashboardPanelProps> = ({
         <h2 className="text-xl font-semibold text-white text-center mb-1">{title}</h2>
         <p className="text-muted-foreground text-center text-sm mb-4">{description}</p>
         <div className="flex justify-center">
-          <Link to={linkTo} className="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm">
+          <LinkComponent 
+            to={!isExternalLink ? linkTo : undefined} 
+            href={isExternalLink ? linkTo : undefined}
+            className="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm"
+          >
             <ArrowRight className="h-4 w-4 mr-1" />
             {buttonText || "Accéder"}
-          </Link>
+          </LinkComponent>
         </div>
       </CardContent>
     </Card>
