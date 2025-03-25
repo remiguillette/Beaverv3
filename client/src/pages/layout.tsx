@@ -53,10 +53,10 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Link to="/" className="flex items-center">
+              <div className="flex items-center">
                 <img src="/Beavernet.png" alt="Beavernet" className="h-12 w-12 mr-2" />
                 <span className="text-primary font-semibold text-lg">Beavernet</span>
-              </Link>
+              </div>
 
               <div className="ml-10 flex items-center space-x-4 text-sm">
                 {navLinks.filter(link => link.path !== '/proxy' && link.path !== '/dashboard').map((link) => (
