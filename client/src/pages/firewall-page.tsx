@@ -106,7 +106,7 @@ export default function FirewallPage() {
     <div className="container mx-auto px-4 py-6">
       <div className="flex items-center mb-6">
         <Shield className="h-7 w-7 text-primary mr-2" />
-        <h1 className="text-2xl font-semibold text-white">Gestion du Pare-feu</h1>
+        <h1 className="text-2xl font-semibold text-white">Firewall</h1>
       </div>
       
       <p className="text-muted-foreground mb-6">
