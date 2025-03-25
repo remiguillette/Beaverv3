@@ -11,6 +11,12 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   updateUser(id: number, updates: Partial<User>): Promise<User>;
   
+
+  // Panneau de bord
+  getPanneaux(): Promise<any[]>;
+  addPanneau(panneau: any): Promise<any>;
+  deletePanneau(id: string): Promise<boolean>;
+
   // Firewall rules
   getFirewallRules(): Promise<any[]>;
   addFirewallRule(rule: any): Promise<any>;
@@ -31,10 +37,13 @@ export class MemStorage implements IStorage {
   public sessionStore: any;
   currentId: number;
 
+  private panneaux: Map<string, any>;
+  
   constructor() {
     this.users = new Map();
     this.firewallRules = new Map();
     this.proxyConfigs = new Map();
+    this.panneaux = new Map();
     this.currentId = 1;
     
     // Set up memory store for sessions
@@ -66,6 +75,23 @@ export class MemStorage implements IStorage {
     return Array.from(this.users.values()).find(
       (user) => user.username === username,
     );
+  }
+
+
+  // Panneaux
+  async getPanneaux(): Promise<any[]> {
+    return Array.from(this.panneaux.values());
+  }
+  
+  async addPanneau(panneau: any): Promise<any> {
+    const id = Date.now().toString();
+    const newPanneau = { ...panneau, id };
+    this.panneaux.set(id, newPanneau);
+    return newPanneau;
+  }
+  
+  async deletePanneau(id: string): Promise<boolean> {
+    return this.panneaux.delete(id);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
