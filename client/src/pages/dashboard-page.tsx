@@ -1,4 +1,5 @@
 import { useAuth } from "@/hooks/use-auth";
+import { useQuery } from "@tanstack/react-query";
 import DashboardPanel from "@/components/DashboardPanel";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
