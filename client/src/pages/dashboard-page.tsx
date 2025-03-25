@@ -24,6 +24,13 @@ export default function DashboardPage() {
           linkTo="/crm"
           buttonText="Accéder"
         />
+        <DashboardPanel
+          title="BeaverLaw"
+          description="Contrôle Animalier"
+          icon={<Settings className="w-8 h-8" />}
+          linkTo="http://0.0.0.0:5002"
+          buttonText="Accéder"
+        />
       </div>
     </div>
   );
