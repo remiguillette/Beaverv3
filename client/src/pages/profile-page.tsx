@@ -90,7 +90,7 @@ export default function ProfilePage() {
                     <img 
                       src="/Beavernet.png" 
                       alt="Beavernet" 
-                      className="h-full w-full object-contain" 
+                      className="h-50 w-60 object-contain" 
                       style={{
                         objectFit: 'cover',
                         objectPosition: 'center'
