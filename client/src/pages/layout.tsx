@@ -43,10 +43,10 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <nav className="bg-card border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full"> {/* This line has been changed */}
           <div className="flex justify-between h-17">
-            <div className="flex items-center">
-              <div className="flex items-center pl-0">
+            <div className="flex items-center pl-0"> {/* This line has been changed */}
+              <div className="flex items-center pl-0"> {/* This line has been changed */}
                 <img src="/Beavernet.png" alt="Beavernet" className="h-20 w-30" />
                 <span className="text-primary font-semibold text-3xl">Beavernet</span>
               </div>
