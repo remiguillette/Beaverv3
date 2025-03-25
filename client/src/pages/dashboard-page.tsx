@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield, ArrowRight, Mail, ScanLine, Car } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight, Mail, ScanLine, Car, Video } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -56,6 +56,13 @@ export default function DashboardPage() {
           description="Vérification du permis de conduire"
           icon={<Car className="w-8 h-8" />}
           linkTo="https://www.dlc.rus.mto.gov.on.ca/dlc/fr/entrer-renseignements"
+          buttonText="Accéder"
+        />
+        <DashboardPanel
+          title="BeaverTube"
+          description="Vidéo"
+          icon={<Video className="w-8 h-8" />}
+          linkTo="https://www.youtube.com/"
           buttonText="Accéder"
         />
       </div>
