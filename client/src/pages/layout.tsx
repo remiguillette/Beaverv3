@@ -60,8 +60,7 @@ export default function Layout({ children }: LayoutProps) {
 
               <div className="ml-10 flex items-center space-x-4 text-sm">
                 {navLinks.filter(link => link.path !== '/proxy' && link.path !== '/dashboard').map((link) => (
-                  <Link 
-                    to={link.path} 
+                  <button
                     key={link.path}
                     className={`flex items-center px-3 py-2 rounded-md font-medium ${
                       location.pathname === link.path 
@@ -71,7 +70,7 @@ export default function Layout({ children }: LayoutProps) {
                   >
                     {link.icon}
                     {link.label}
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
