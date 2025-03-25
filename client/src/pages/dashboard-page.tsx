@@ -26,6 +26,13 @@ export default function DashboardPage() {
       icon: <ArrowLeftRight className="h-12 w-12" />,
       linkTo: "/proxy",
       buttonText: "Configurer le proxy"
+    },
+    {
+      title: "BeaverCRM",
+      description: "Gestion de la relation client",
+      icon: <FileText className="h-12 w-12" />,
+      linkTo: "http://0.0.0.0:5001",
+      buttonText: "Accéder"
     }
   ];
 
