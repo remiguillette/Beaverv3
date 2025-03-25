@@ -194,17 +194,12 @@ export default function ProfilePage() {
               <CardTitle>Sécurité</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 gap-4">n du trafic.</p>
-                  <Link to="/proxy" className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
-                    <ArrowLeftRight className="h-4 w-4 mr-1" />
-                    Gérer le proxy
-                  </Link>
-                </div>
+              <div className="grid grid-cols-1 gap-4">
+                <p>La sécurité de votre application est notre priorité.</p>
               </div>
             </CardContent>
           </Card>
         </div>
-      </div>
-    </div>
+      </div>/div>
   );
 }
