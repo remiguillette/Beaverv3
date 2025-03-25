@@ -29,6 +29,11 @@ function commandExists(command: string): Promise<boolean> {
 export function setupProxyRoutes(app: Express) {
   // Get all proxy configurations
   app.get("/api/proxy/configs", ensureAuthenticated, async (req, res) => {
+    // Log des en-têtes pour vérification
+    console.log('X-Real-IP:', req.headers['x-real-ip']);
+    console.log('X-Forwarded-For:', req.headers['x-forwarded-for']);
+    console.log('X-Forwarded-Proto:', req.headers['x-forwarded-proto']);
+    console.log('X-Forwarded-Port:', req.headers['x-forwarded-port']);
     try {
       const configs = await storage.getProxyConfigs();
       res.json(configs);
