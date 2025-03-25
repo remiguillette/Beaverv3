@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield, ArrowRight, Mail, Scanner } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight, Mail } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
