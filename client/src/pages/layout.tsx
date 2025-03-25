@@ -6,7 +6,6 @@ import {
   LogOut, 
   User,
   LayoutDashboard,
-  Shield,
   ArrowLeftRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -32,8 +31,8 @@ export default function Layout({ children }: LayoutProps) {
   const { toast } = useToast();
   const [showSuccessAlert, setShowSuccessAlert] = useState(true);
 
-  // If location is /auth, don't render the layout
-  if (location.pathname === "/auth" || !user) {
+  // Si l'utilisateur n'est pas connecté, on retourne directement les enfants
+  if (!user) {
     return <>{children}</>;
   }
 
@@ -41,37 +40,15 @@ export default function Layout({ children }: LayoutProps) {
     logoutMutation.mutate();
   };
 
-  // Navigation links
-  const navLinks = [
-    { path: "/", label: "", icon: null },
-    { path: "/proxy", label: "Proxy", icon: <ArrowLeftRight className="h-5 w-5 mr-2" /> }
-  ];
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <nav className="bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between h-17">
             <div className="flex items-center">
               <div className="flex items-center">
-                <img src="/Beavernet.png" alt="Beavernet" className="h-12 w-12 mr-2" />
+                <img src="/Beavernet.png" alt="Beavernet" className="h-12 w-14 mr-2" />
                 <span className="text-primary font-semibold text-lg">Beavernet</span>
-              </div>
-
-              <div className="ml-10 flex items-center space-x-4 text-sm">
-                {navLinks.filter(link => link.path !== '/proxy' && link.path !== '/dashboard').map((link) => (
-                  <button
-                    key={link.path}
-                    className={`flex items-center px-3 py-2 rounded-md font-medium ${
-                      location.pathname === link.path 
-                        ? "text-white bg-secondary" 
-                        : "text-muted-foreground hover:text-white hover:bg-secondary"
-                    }`}
-                  >
-                    {link.icon}
-                    {link.label}
-                  </button>
-                ))}
               </div>
             </div>
 
