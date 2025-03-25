@@ -1,16 +1,6 @@
-
-import React, { useCallback } from 'react';
-import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
+import React from 'react';
 import { Link } from 'react-router-dom';
-
-  // Add keyboard navigation support
-  useKeyboardShortcuts([
-    { key: 'h', ctrl: true, handler: () => window.location.href = '/' },
-    { key: 's', ctrl: true, handler: () => window.location.href = '/settings' },
-    { key: 'f', ctrl: true, handler: () => document.querySelector<HTMLInputElement>('[role="search"]')?.focus() },
-    { key: 'Escape', handler: () => document.activeElement instanceof HTMLElement && document.activeElement.blur() }
-  ]);
-
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 
@@ -22,37 +12,34 @@ interface DashboardPanelProps {
   buttonText: string;
 }
 
-const DashboardPanel: React.FC<DashboardPanelProps> = ({
-  title,
-  description,
-  icon,
-  linkTo,
-  buttonText
-}) => {
-  const isExternalLink = linkTo.startsWith('http');
-  const LinkComponent = isExternalLink ? 'a' : Link;
+export default function DashboardPanel({ 
+  title, 
+  description, 
+  icon, 
+  linkTo, 
+  buttonText 
+}: DashboardPanelProps) {
+  useKeyboardShortcuts([
+    { key: 'h', ctrl: true, handler: () => window.location.href = '/' },
+    { key: 's', ctrl: true, handler: () => window.location.href = '/settings' },
+    { key: 'f', ctrl: true, handler: () => document.querySelector<HTMLInputElement>('[role="search"]')?.focus() },
+    { key: 'Escape', handler: () => document.activeElement instanceof HTMLElement && document.activeElement.blur() }
+  ]);
 
   return (
-    <Card className="bg-card border border-border hover:shadow-lg transition-transform hover:scale-105">
-      <CardContent className="p-5">
-        <div className="flex items-center justify-center h-16 mb-4 text-primary">
-          {icon}
-        </div>
-        <h2 className="text-xl font-semibold text-white text-center mb-1">{title}</h2>
-        <p className="text-muted-foreground text-center text-sm mb-4">{description}</p>
-        <div className="flex justify-center">
-          <LinkComponent 
-            to={!isExternalLink ? linkTo : undefined} 
-            href={isExternalLink ? linkTo : undefined}
-            className="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm"
-          >
-            <ArrowRight className="h-4 w-4 mr-1" />
-            {buttonText || "Accéder"}
-          </LinkComponent>
-        </div>
+    <Card className="flex flex-col justify-between h-full">
+      <CardContent className="pt-6">
+        <div className="mb-4">{icon}</div>
+        <h3 className="text-lg font-semibold mb-2">{title}</h3>
+        <p className="text-muted-foreground mb-4">{description}</p>
+        <Link
+          to={linkTo}
+          className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+        >
+          {buttonText}
+          <ArrowRight className="ml-2 h-4 w-4" />
+        </Link>
       </CardContent>
     </Card>
   );
-};
-
-export default DashboardPanel;
+}
