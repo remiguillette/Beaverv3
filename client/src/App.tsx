@@ -16,7 +16,7 @@ import { Loader2 } from "lucide-react";
 // Nouveau composant ProtectedRoute utilisant react-router-dom
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, isLoading } = useAuth();
-  
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -24,11 +24,11 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
       </div>
     );
   }
-  
+
   if (!user) {
     return <Navigate to="/auth" replace />;
   }
-  
+
   return <>{children}</>;
 }
 
@@ -45,7 +45,7 @@ function App() {
                   <DashboardPage />
                 </ProtectedRoute>
               } />
-              
+
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <ProfilePage />
