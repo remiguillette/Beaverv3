@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -28,6 +28,13 @@ export default function DashboardPage() {
           description="Contrôle Animalier"
           icon={<Shield className="w-8 h-8" />}
           linkTo="http://0.0.0.0:5002"
+          buttonText="Accéder"
+        />
+        <DashboardPanel
+          title="BeaverPatch"
+          description="Système de Répartition CAD"
+          icon={<ArrowRight className="w-8 h-8" />}
+          linkTo="http://0.0.0.0:5003"
           buttonText="Accéder"
         />
       </div>
