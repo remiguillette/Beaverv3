@@ -27,7 +27,14 @@ export default function DashboardPage() {
   const { user } = useAuth();
   const { toast } = useToast();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [panels, setPanels] = useState<PanelFormValues[]>([]);
+  const { data: savedPanels = [] } = useQuery({
+    queryKey: ['panneaux'],
+    queryFn: async () => {
+      const response = await apiRequest.get('/api/panneaux');
+      return response.data;
+    }
+  });
+  const [panels, setPanels] = useState<PanelFormValues[]>(savedPanels);
 
   const form = useForm<PanelFormValues>({
     resolver: zodResolver(panelSchema),
@@ -40,12 +47,14 @@ export default function DashboardPage() {
 
   const addPanelMutation = useMutation({
     mutationFn: async (data: PanelFormValues) => {
-      return data;
+      const response = await apiRequest.post('/api/panneaux', data);
+      return response.data;
     },
     onSuccess: (data) => {
       setPanels([...panels, data]);
       setIsDialogOpen(false);
       form.reset();
+      queryClient.invalidateQueries(['panneaux']);
       toast({
         title: "Panneau ajouté",
         description: "Le panneau a été ajouté avec succès",
