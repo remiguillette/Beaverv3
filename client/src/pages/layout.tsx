@@ -59,7 +59,7 @@ export default function Layout({ children }: LayoutProps) {
               </Link>
 
               <div className="ml-10 flex items-center space-x-4 text-sm">
-                {navLinks.filter(link => link.path !== '/proxy').map((link) => (
+                {navLinks.filter(link => link.path !== '/proxy' && link.path !== '/dashboard').map((link) => (
                   <Link 
                     to={link.path} 
                     key={link.path}
