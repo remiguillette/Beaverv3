@@ -29,7 +29,7 @@ const DashboardPanel: React.FC<DashboardPanelProps> = ({
         <div className="flex justify-center">
           <Link to={linkTo} className="flex items-center justify-center px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-md transition-colors text-sm">
             <ArrowRight className="h-4 w-4 mr-1" />
-            {buttonText}
+            {buttonText || "Accéder"}
           </Link>
         </div>
       </CardContent>
