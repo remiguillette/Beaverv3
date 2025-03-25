@@ -28,7 +28,15 @@ async function comparePasswords(supplied: string, stored: string) {
   return timingSafeEqual(hashedBuf, suppliedBuf);
 }
 
-export function setupAuth(app: Express) {
+export function setupAuthRoutes(app: Express) {
+  app.get("/auth/validate", (req, res) => {
+    if (req.isAuthenticated()) {
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(401);
+    }
+  });
+
   const sessionSettings: session.SessionOptions = {
     secret: process.env.SESSION_SECRET || "beavernet-secret-key",
     resave: false,
