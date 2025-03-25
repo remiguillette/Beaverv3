@@ -1,6 +1,16 @@
 
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useKeyboardShortcuts } from '@/hooks/useKeyboardShortcuts';
 import { Link } from 'react-router-dom';
+
+  // Add keyboard navigation support
+  useKeyboardShortcuts([
+    { key: 'h', ctrl: true, handler: () => window.location.href = '/' },
+    { key: 's', ctrl: true, handler: () => window.location.href = '/settings' },
+    { key: 'f', ctrl: true, handler: () => document.querySelector<HTMLInputElement>('[role="search"]')?.focus() },
+    { key: 'Escape', handler: () => document.activeElement instanceof HTMLElement && document.activeElement.blur() }
+  ]);
+
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 
