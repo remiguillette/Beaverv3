@@ -48,7 +48,7 @@ export default function Layout({ children }: LayoutProps) {
             <div className="flex items-center">
               <div className="flex items-center">
                 <img src="/Beavernet.png" alt="Beavernet" className="h-20 w-30 mr-2" />
-                <span className="text-primary font-semibold text-lg">Beavernet</span>
+                <span className="text-primary font-semibold text-3xl">Beavernet</span>
               </div>
             </div>
 
