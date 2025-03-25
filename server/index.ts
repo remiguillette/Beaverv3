@@ -19,8 +19,8 @@ app.use((req, res, next) => {
 
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
-      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
+    if (path.startsWith("/api") || path.startsWith("/auth")) {
+      let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms - Referer: ${req.headers.referer || 'none'} - Port: ${req.headers['x-forwarded-port'] || req.socket.localPort}`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
       }
