@@ -9,8 +9,30 @@ export function setupPanneauRoutes(app: Router) {
   });
 
   app.post("/api/panneaux", async (req, res) => {
-    const panneau = await storage.addPanneau(req.body);
-    res.json(panneau);
+    try {
+      const { title, description, url } = req.body;
+      
+      if (!title || !description || !url) {
+        return res.status(400).json({ 
+          error: "Tous les champs sont requis" 
+        });
+      }
+
+      const panneau = await storage.addPanneau(req.body);
+      
+      if (!panneau) {
+        return res.status(500).json({ 
+          error: "Erreur lors de la sauvegarde du panneau" 
+        });
+      }
+
+      res.status(201).json(panneau);
+    } catch (error) {
+      console.error("Erreur serveur:", error);
+      res.status(500).json({ 
+        error: "Erreur interne du serveur" 
+      });
+    }
   });
 
   app.delete("/api/panneaux/:id", async (req, res) => {

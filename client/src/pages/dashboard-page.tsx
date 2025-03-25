@@ -47,17 +47,33 @@ export default function DashboardPage() {
 
   const addPanelMutation = useMutation({
     mutationFn: async (data: PanelFormValues) => {
-      const response = await apiRequest.post('/api/panneaux', data);
-      return response.data;
+      try {
+        const response = await apiRequest.post('/api/panneaux', data);
+        if (!response.data) {
+          throw new Error("Pas de données reçues du serveur");
+        }
+        return response.data;
+      } catch (error) {
+        console.error("Erreur lors de l'ajout du panneau:", error);
+        throw new Error("Échec de la sauvegarde du panneau");
+      }
     },
     onSuccess: (data) => {
-      setPanels([...panels, data]);
+      setPanels(currentPanels => [...currentPanels, data]);
       setIsDialogOpen(false);
       form.reset();
       queryClient.invalidateQueries(['panneaux']);
       toast({
         title: "Panneau ajouté",
         description: "Le panneau a été ajouté avec succès",
+        variant: "success"
+      });
+    },
+    onError: (error) => {
+      toast({
+        title: "Erreur",
+        description: error.message || "Une erreur est survenue lors de la sauvegarde",
+        variant: "destructive"
       });
     }
   });
