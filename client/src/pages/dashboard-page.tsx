@@ -1,33 +1,70 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { FileText, Users } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
+import DashboardPanel from "@/components/DashboardPanel";
+import { Shield, FileText, ArrowLeftRight } from "lucide-react";
 
 export default function DashboardPage() {
-  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const defaultPanels = [
+    {
+      title: "BeaverDoc",
+      description: "Accéder à la documentation de BeaverDoc",
+      icon: <FileText className="h-12 w-12" />,
+      linkTo: "http://0.0.0.0:5003",
+      buttonText: "Accéder"
+    },
+    {
+      title: "Pare-feu",
+      description: "Gérez vos règles de pare-feu pour sécuriser votre réseau",
+      icon: <Shield className="h-12 w-12" />,
+      linkTo: "/firewall",
+      buttonText: "Configurer le pare-feu"
+    },
+    {
+      title: "Proxy",
+      description: "Configurez les paramètres du proxy pour la redirection du trafic",
+      icon: <ArrowLeftRight className="h-12 w-12" />,
+      linkTo: "/proxy",
+      buttonText: "Configurer le proxy"
+    },
+    {
+      title: "BeaverCRM",
+      description: "Gestion de la relation client",
+      icon: <FileText className="h-12 w-12" />,
+      linkTo: "http://0.0.0.0:5001",
+      buttonText: "Accéder"
+    },
+    {
+      title: "BeaverLaw",
+      description: "Application de la loi Contrôle Animalier",
+      icon: <Shield className="h-12 w-12" />,
+      linkTo: "http://0.0.0.0:5002",
+      buttonText: "Accéder"
+    }
+  ];
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h1 className="text-2xl font-semibold text-white mb-6">Tableau de bord</h1>
+      <div className="flex items-center mb-6">
+        <FileText className="h-7 w-7 text-primary mr-2" />
+        <h1 className="text-2xl font-semibold text-white">Tableau de bord</h1>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Card className="bg-card border-border p-6 hover:border-primary transition-colors cursor-pointer" onClick={() => navigate("/doc")}>
-          <div className="flex flex-col items-center text-center">
-            <FileText className="h-12 w-12 text-primary mb-4" />
-            <h2 className="text-xl font-medium mb-2">BeaverDoc</h2>
-            <p className="text-muted-foreground">Accéder à la documentation de BeaverDoc</p>
-            <Button variant="link" className="mt-4">Accéder</Button>
-          </div>
-        </Card>
+      <p className="text-muted-foreground mb-6">
+        Bienvenue sur l'intranet Beavernet, {user?.username}
+      </p>
 
-        <Card className="bg-card border-border p-6 hover:border-primary transition-colors cursor-pointer" onClick={() => navigate("/crm")}>
-          <div className="flex flex-col items-center text-center">
-            <Users className="h-12 w-12 text-primary mb-4" />
-            <h2 className="text-xl font-medium mb-2">BeaverCRM</h2>
-            <p className="text-muted-foreground">Gestion de la relation client</p>
-            <Button variant="link" className="mt-4">Accéder</Button>
-          </div>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {defaultPanels.map((panel, index) => (
+          <DashboardPanel
+            key={index}
+            title={panel.title}
+            description={panel.description}
+            icon={panel.icon}
+            linkTo={panel.linkTo}
+            buttonText={panel.buttonText}
+          />
+        ))}
       </div>
     </div>
   );
