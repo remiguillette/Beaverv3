@@ -45,16 +45,7 @@ function App() {
                   <DashboardPage />
                 </ProtectedRoute>
               } />
-              <Route path="/firewall" element={
-                <ProtectedRoute>
-                  <FirewallPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/proxy" element={
-                <ProtectedRoute>
-                  <ProxyPage />
-                </ProtectedRoute>
-              } />
+              
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <ProfilePage />

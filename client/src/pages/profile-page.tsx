@@ -194,19 +194,7 @@ export default function ProfilePage() {
               <CardTitle>Sécurité</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-white font-medium mb-2">Pare-feu</h3>
-                  <p className="text-muted-foreground text-sm mb-3">Configurez vos règles de pare-feu pour protéger votre réseau.</p>
-                  <Link to="/firewall" className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
-                    <Shield className="h-4 w-4 mr-1" />
-                    Gérer le pare-feu
-                  </Link>
-                </div>
-                
-                <div>
-                  <h3 className="text-white font-medium mb-2">Proxy</h3>
-                  <p className="text-muted-foreground text-sm mb-3">Configurez les paramètres du proxy pour la redirection du trafic.</p>
+              <div className="grid grid-cols-1 gap-4">n du trafic.</p>
                   <Link to="/proxy" className="inline-flex items-center px-3 py-2 border border-primary text-primary bg-transparent hover:bg-primary hover:text-white rounded-md transition-colors text-sm">
                     <ArrowLeftRight className="h-4 w-4 mr-1" />
                     Gérer le proxy
