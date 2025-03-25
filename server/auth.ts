@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import { Express } from "express";
+import { Express, Request, Response, NextFunction } from "express";
 import session from "express-session";
 import { scrypt, randomBytes, timingSafeEqual } from "crypto";
 import { promisify } from "util";
@@ -114,11 +114,11 @@ export function setupAuth(app: Express) {
 
   app.patch("/api/user", async (req, res, next) => {
     if (!req.isAuthenticated()) return res.status(401).send("Non autorisé");
-    
+
     try {
       const user = req.user as SelectUser;
       const updateData: any = {};
-      
+
       if (req.body.email) {
         updateData.email = req.body.email;
       }
@@ -137,4 +137,25 @@ export function setupAuth(app: Express) {
       next(err);
     }
   });
+
+  // Middleware to check if user is authenticated with redirect
+  const ensureAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+    if (req.isAuthenticated()) {
+      return next();
+    }
+
+    const originalPort = req.get('x-forwarded-port') || req.socket.localPort;
+
+    // If not authenticated and trying to access protected routes, redirect to auth
+    if (originalPort && ['5001', '5002'].includes(originalPort.toString())) {
+      return res.redirect('http://0.0.0.0:5000/auth');
+    }
+
+    res.status(401).json({ message: "Non autorisé" });
+  };
+
+  //Example usage of the middleware.  Replace with your actual protected routes.
+  app.use('/api/user', ensureAuthenticated, (req,res,next) => {next()});
+  app.use('/api/patch', ensureAuthenticated, (req,res,next) => {next()});
+
 }
