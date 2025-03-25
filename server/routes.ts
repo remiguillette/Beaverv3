@@ -4,19 +4,12 @@ import { setupAuthRoutes } from "./auth";
 
 import { setupPanneauRoutes } from "./panneau";
 
-import { setupFirewallRoutes } from "./firewall";
-import { setupProxyRoutes } from "./proxy";
-
 export async function registerRoutes(app: Express): Promise<Server> {
   // sets up /api/register, /api/login, /api/logout, /api/user
 
   setupPanneauRoutes(app);
 
   setupAuthRoutes(app);
-  
-  // Setup firewall and proxy routes
-  setupFirewallRoutes(app);
-  setupProxyRoutes(app);
 
   const httpServer = createServer(app);
 
