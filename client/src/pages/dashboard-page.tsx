@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield, ArrowRight, Mail } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight, Mail, ScanLine } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -47,7 +47,7 @@ export default function DashboardPage() {
         <DashboardPanel
           title="BeaverPlate"
           description="Lecture automatisée de plaques d'immatriculation (LAPI)"
-          icon={<Scanner className="w-8 h-8" />}
+          icon={<ScanLine className="w-8 h-8" />}
           linkTo="http://0.0.0.0:5003"
           buttonText="Accéder"
         />
