@@ -39,3 +39,16 @@ task = "packager.installForAll"
 task = "shell.exec"
 args = "npm run dev"
 waitForPort = 5000
+
+[[workflows.workflow]]
+name = "Start Services"
+author = 40841584
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "nginx -c $PWD/nginx.conf"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
