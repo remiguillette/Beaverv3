@@ -82,7 +82,7 @@ export default function Layout({ children }: LayoutProps) {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="flex items-center">
                     <div className="h-8 w-8 rounded-full overflow-hidden bg-secondary border border-border mr-2">
-                      {/* BeaverLogo removed here */}
+                      <img src="/Beavernet.png" alt="Beavernet" className="h-full w-full object-cover" />
                     </div>
                     <span className="text-muted-foreground">{user.username}</span>
                     <ChevronDown className="ml-1 h-5 w-5 text-muted-foreground" />
