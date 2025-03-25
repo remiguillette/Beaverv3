@@ -46,8 +46,8 @@ export default function Layout({ children }: LayoutProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-17">
             <div className="flex items-center">
-              <div className="flex items-center">
-                <img src="/Beavernet.png" alt="Beavernet" className="h-20 w-30 mr-2" />
+              <div className="flex items-center pl-0">
+                <img src="/Beavernet.png" alt="Beavernet" className="h-20 w-30" />
                 <span className="text-primary font-semibold text-3xl">Beavernet</span>
               </div>
             </div>
