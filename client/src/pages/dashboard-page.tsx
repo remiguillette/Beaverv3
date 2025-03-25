@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield, ArrowRight } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight, Mail } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -35,6 +35,13 @@ export default function DashboardPage() {
           description="Système de Répartition CAD"
           icon={<ArrowRight className="w-8 h-8" />}
           linkTo="http://0.0.0.0:5003"
+          buttonText="Accéder"
+        />
+        <DashboardPanel
+          title="BeaverMail"
+          description="Messagerie sécurisée"
+          icon={<Mail className="w-8 h-8" />}
+          linkTo="mailto:"
           buttonText="Accéder"
         />
       </div>
