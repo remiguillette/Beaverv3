@@ -33,6 +33,13 @@ export default function DashboardPage() {
       icon: <FileText className="h-12 w-12" />,
       linkTo: "http://0.0.0.0:5001",
       buttonText: "Accéder"
+    },
+    {
+      title: "BeaverLaw",
+      description: "Application de la loi Contrôle Animalier",
+      icon: <Shield className="h-12 w-12" />,
+      linkTo: "http://0.0.0.0:5002",
+      buttonText: "Accéder"
     }
   ];
 
