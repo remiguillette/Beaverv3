@@ -200,6 +200,7 @@ export default function ProfilePage() {
             </CardContent>
           </Card>
         </div>
-      </div>/div>
+      </div>
+    </div>
   );
 }
