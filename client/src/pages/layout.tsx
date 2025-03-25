@@ -44,8 +44,8 @@ export default function Layout({ children }: LayoutProps) {
   // Navigation links
   const navLinks = [
     { path: "/", label: "Tableau de bord", icon: <LayoutDashboard className="h-5 w-5 mr-2" /> },
-    { path: "/firewall", label: "Pare-feu", icon: <Shield className="h-5 w-5 mr-2" /> },
-    { path: "/proxy", label: "Proxy", icon: <ArrowLeftRight className="h-5 w-5 mr-2" /> }
+    // { path: "/firewall", label: "Pare-feu", icon: <Shield className="h-5 w-5 mr-2" /> },
+    // { path: "/proxy", label: "Proxy", icon: <ArrowLeftRight className="h-5 w-5 mr-2" /> }
   ];
 
   return (
