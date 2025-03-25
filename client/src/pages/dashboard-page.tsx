@@ -1,8 +1,7 @@
-
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings } from 'lucide-react';
+import { FileText, Settings, Shield } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -27,7 +26,7 @@ export default function DashboardPage() {
         <DashboardPanel
           title="BeaverLaw"
           description="Contrôle Animalier"
-          icon={<Settings className="w-8 h-8" />}
+          icon={<Shield className="w-8 h-8" />}
           linkTo="http://0.0.0.0:5002"
           buttonText="Accéder"
         />
