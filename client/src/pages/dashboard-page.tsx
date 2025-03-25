@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DashboardPanel from '@/components/DashboardPanel';
-import { FileText, Settings, Shield, ArrowRight, Mail, ScanLine } from 'lucide-react';
+import { FileText, Settings, Shield, ArrowRight, Mail, ScanLine, Car } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
@@ -49,6 +49,13 @@ export default function DashboardPage() {
           description="Lecture automatisée de plaques d'immatriculation (LAPI)"
           icon={<ScanLine className="w-8 h-8" />}
           linkTo="http://0.0.0.0:5003"
+          buttonText="Accéder"
+        />
+        <DashboardPanel
+          title="BeaverDrive"
+          description="Vérification du permis de conduire"
+          icon={<Car className="w-8 h-8" />}
+          linkTo="https://www.dlc.rus.mto.gov.on.ca/dlc/fr/entrer-renseignements"
           buttonText="Accéder"
         />
       </div>
