@@ -7,10 +7,10 @@ export default function DashboardPage() {
 
   const defaultPanels = [
     {
-      title: "Documentation Beavernet",
-      description: "Accéder à la documentation de l'intranet",
+      title: "BeaverDoc",
+      description: "Accéder à la documentation de BeaverDoc",
       icon: <FileText className="h-12 w-12" />,
-      linkTo: "/documentation",
+      linkTo: "http://0.0.0.0:5003",
       buttonText: "Accéder"
     },
     {
