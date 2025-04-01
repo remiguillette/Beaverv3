@@ -1,7 +1,7 @@
 
 export const config = {
   server: {
-    port: process.env.PORT || 5000,
+    port: process.env.PORT || 5001,
     host: '0.0.0.0'
   },
   auth: {

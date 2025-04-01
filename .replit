@@ -1,5 +1,5 @@
 modules = ["nodejs-20", "web"]
-run = "npm run dev"
+run = "npm start"
 hidden = [".config", ".git", "generated-icon.png", "node_modules", "dist"]
 
 [nix]
@@ -7,14 +7,18 @@ channel = "stable-24_05"
 
 [deployment]
 deploymentTarget = "autoscale"
-run = ["sh", "-c", "npm run dev"]
+run = ["sh", "-c", "npm start"]
 
 [[ports]]
 localPort = 5000
 externalPort = 80
 
+[[ports]]
+localPort = 5001
+externalPort = 3000
+
 [workflows]
-runButton = "Start Dev Server"
+runButton = "Build and Start"
 
 [[workflows.workflow]]
 name = "Project"
@@ -38,7 +42,8 @@ task = "packager.installForAll"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run dev"
-waitForPort = 5000
+waitForPort = 5001
+externalPort = 3000
 
 [[workflows.workflow]]
 name = "Start Services"
@@ -61,3 +66,16 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npm run dev"
+
+[[workflows.workflow]]
+name = "Build and Start"
+author = 41041008
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run build"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm start"
